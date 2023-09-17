@@ -8,8 +8,14 @@
   "license": "MIT",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "prod": "",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
