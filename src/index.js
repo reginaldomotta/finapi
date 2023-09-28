@@ -28,7 +28,7 @@ function getBalance(statement) {
     if (operation.type === "credit") {
       return acc + operation.amount
     } else {
-      return acc + operation.amount
+      return acc - operation.amount
     }
   }, 0)
 
@@ -141,6 +141,22 @@ app.get("/account", verifyIfExistsAccountCPF, (request, response) => {
   const { customer } = request
 
   return response.json(customer)
+})
+
+app.delete("/account", verifyIfExistsAccountCPF, (request, response) => {
+  const { customer } = request
+
+  customers.splice(customer, 1)
+
+  return response.status(200).json(customers)
+})
+
+app.get("/balance", verifyIfExistsAccountCPF, (request, response) => {
+  const { customer } = request
+
+  const balance = getBalance(customer.statement)
+
+  return response.json(balance)
 })
 
 app.listen(3333)
